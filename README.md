@@ -1,28 +1,5 @@
 # bookStore
-O processo de cadastro envolve três camadas principais:
+O Postman atua como a primeira linha de defesa no desenvolvimento de aplicativos React Native ao permitir a validação rigorosa de APIs antes mesmo que o frontend seja construído. AS Constraints (restrições) e os tipos de dados definidos no Postman garantem que apenas dados válidos cheguem ao servidor, evitando comportamentos inesperados, travamentos na interface do usuário (UI) e corrupção de dados. 
 
-Frontend (React Native) → coleta os dados do usuário;
-Backend (API Node.js) → valida e processa os dados;
-Banco de Dados (MongoDB) → armazena as informações;
-
-Fluxo de Funcionamento o usuário preenche formulário (username, email, password) o react Native envia requisição (POST /signup), backend recebe os dados passa pela validação dos campos depois verifica se o usuário já existe, usa a criptografada e a senha é salva no mongoDB. A resposta pode vir de certo ou errado para o usuário.
-
-O frontend (React Native) coleta os dados do formulário e envia para o backend via requisição HTTP. O backend (Node.js + Express) tem a função de validar, trava e salvar os dados. O banco de dados amarzena as senhas quando salvas pelo criptografada. 
-Exemplo de documento:
-"_id": "123456", 
-"username": "usuario123",
-"email": "usuario@email.com" e
-"password": "$2b$10$hashseguro..."
-
-Práticas essenciais de senguração de armazenamento de dados:
-Nunca armazenar senha em texto puro,
-Utilizar hashing com bcrypt,
-Validar entrada de dados,
-Usar HTTPS em produção e
-Não retornar senha nas respostas da API.
-
-O mais seguro seria:
-mail válido,
-Senha com no mínimo 6 caracteres e
-Username único (opcional).
-
+COMO FUNCIONAR A PRIMEIRA LINHA DE TESTE:
+O postman permite simular o comportamento de API JSON Schema Validation na aba "Tests". Cria-se um teste no Postman para garantir que a API responda com 400 Bad Request ou um erro específico quando a idade é menor que 0, depois o desenvolvedor de React Native identifica o erro antes de integrar, isso para o app arrumar o erro sem quebrar. Quando um usuário tentar se cadastrar em um e-mail existente(no caso um email-duplicado), o postamn testa se a API retorna um erro personalizado (ex: erro 400) em vez de simplismente felhar de forma genérica. O app também pode enviar uma resposta ao usuário antes de fechar inesperadamente.
